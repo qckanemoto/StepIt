@@ -3,6 +3,7 @@
 namespace Stepit\Bundle\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
 
 /**
  * Step
@@ -12,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Step
 {
+    use Timestampable;
+
     /**
      * @var integer
      *
