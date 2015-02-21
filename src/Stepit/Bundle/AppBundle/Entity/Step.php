@@ -49,11 +49,33 @@ class Step
      */
     private $sequence;
 
+    /**
+     * @var Project
+     *
+     * @ORM\ManyToOne(targetEntity="Project", inversedBy="steps")
+     * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
+     */
+    private $project;
+
+    /**
+     * @var Content[]
+     *
+     * @ORM\OneToMany(targetEntity="Content", mappedBy="step")
+     */
+    private $contents;
+
+    /**
+     * @var DefaultContent[]
+     *
+     * @ORM\OneToMany(targetEntity="DefaultContent", mappedBy="step")
+     */
+    private $defaultContents;
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -76,7 +98,7 @@ class Step
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -99,7 +121,7 @@ class Step
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -122,7 +144,7 @@ class Step
     /**
      * Get link
      *
-     * @return string 
+     * @return string
      */
     public function getLink()
     {
@@ -145,10 +167,42 @@ class Step
     /**
      * Get sequence
      *
-     * @return integer 
+     * @return integer
      */
     public function getSequence()
     {
         return $this->sequence;
+    }
+
+    /**
+     * @param Project $project
+     */
+    public function setProject($project)
+    {
+        $this->project = $project;
+    }
+
+    /**
+     * @return Project
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
+
+    /**
+     * @param Content[] $contents
+     */
+    public function setContents($contents)
+    {
+        $this->contents = $contents;
+    }
+
+    /**
+     * @return Content[]
+     */
+    public function getContents()
+    {
+        return $this->contents;
     }
 }

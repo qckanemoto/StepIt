@@ -28,11 +28,27 @@ class Content
      */
     private $value;
 
+    /**
+     * @var Matter
+     *
+     * @ORM\ManyToOne(targetEntity="Matter", inversedBy="contents")
+     * @ORM\JoinColumn(name="matter_id", referencedColumnName="id")
+     */
+    private $matter;
+
+    /**
+     * @var Step
+     *
+     * @ORM\ManyToOne(targetEntity="Step", inversedBy="contents")
+     * @ORM\JoinColumn(name="step_id", referencedColumnName="id")
+     */
+    private $step;
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -55,10 +71,42 @@ class Content
     /**
      * Get value
      *
-     * @return string 
+     * @return string
      */
     public function getValue()
     {
         return $this->value;
+    }
+
+    /**
+     * @param Matter $matter
+     */
+    public function setMatter($matter)
+    {
+        $this->matter = $matter;
+    }
+
+    /**
+     * @return Matter
+     */
+    public function getMatter()
+    {
+        return $this->matter;
+    }
+
+    /**
+     * @param Step $step
+     */
+    public function setStep($step)
+    {
+        $this->step = $step;
+    }
+
+    /**
+     * @return Step
+     */
+    public function getStep()
+    {
+        return $this->step;
     }
 }

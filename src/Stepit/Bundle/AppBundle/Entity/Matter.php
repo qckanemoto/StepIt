@@ -42,11 +42,26 @@ class Matter
      */
     private $state;
 
+    /**
+     * @var Project
+     *
+     * @ORM\ManyToOne(targetEntity="Project", inversedBy="matters")
+     * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
+     */
+    private $project;
+
+    /**
+     * @var Content[]
+     *
+     * @ORM\OneToMany(targetEntity="Content", mappedBy="matter")
+     */
+    private $contents;
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -69,7 +84,7 @@ class Matter
     /**
      * Get owners
      *
-     * @return string 
+     * @return string
      */
     public function getOwners()
     {
@@ -92,7 +107,7 @@ class Matter
     /**
      * Get type
      *
-     * @return string 
+     * @return string
      */
     public function getType()
     {
@@ -115,10 +130,42 @@ class Matter
     /**
      * Get state
      *
-     * @return string 
+     * @return string
      */
     public function getState()
     {
         return $this->state;
+    }
+
+    /**
+     * @param Project $project
+     */
+    public function setProject($project)
+    {
+        $this->project = $project;
+    }
+
+    /**
+     * @return Project
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
+
+    /**
+     * @param Content[] $contents
+     */
+    public function setContents($contents)
+    {
+        $this->contents = $contents;
+    }
+
+    /**
+     * @return Content[]
+     */
+    public function getContents()
+    {
+        return $this->contents;
     }
 }

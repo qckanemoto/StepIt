@@ -35,11 +35,25 @@ class Project
      */
     private $description;
 
+    /**
+     * @var Step[]
+     *
+     * @ORM\OneToMany(targetEntity="Step", mappedBy="project")
+     */
+    private $steps;
+
+    /**
+     * @var Matter[]
+     *
+     * @ORM\OneToMany(targetEntity="Matter", mappedBy="project")
+     */
+    private $matters;
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -62,7 +76,7 @@ class Project
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -85,10 +99,42 @@ class Project
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * @param Step[] $steps
+     */
+    public function setSteps($steps)
+    {
+        $this->steps = $steps;
+    }
+
+    /**
+     * @return Step[]
+     */
+    public function getSteps()
+    {
+        return $this->steps;
+    }
+
+    /**
+     * @param Matter[] $matters
+     */
+    public function setMatters($matters)
+    {
+        $this->matters = $matters;
+    }
+
+    /**
+     * @return Matter[]
+     */
+    public function getMatters()
+    {
+        return $this->matters;
     }
 }

@@ -35,11 +35,19 @@ class DefaultContent
      */
     private $value;
 
+    /**
+     * @var Step
+     *
+     * @ORM\ManyToOne(targetEntity="Step", inversedBy="default_contents")
+     * @ORM\JoinColumn(name="step_id", referencedColumnName="id")
+     */
+    private $step;
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -62,7 +70,7 @@ class DefaultContent
     /**
      * Get matterType
      *
-     * @return string 
+     * @return string
      */
     public function getMatterType()
     {
@@ -85,10 +93,26 @@ class DefaultContent
     /**
      * Get value
      *
-     * @return string 
+     * @return string
      */
     public function getValue()
     {
         return $this->value;
+    }
+
+    /**
+     * @param Step $step
+     */
+    public function setStep($step)
+    {
+        $this->step = $step;
+    }
+
+    /**
+     * @return Step
+     */
+    public function getStep()
+    {
+        return $this->step;
     }
 }
