@@ -9,7 +9,7 @@ use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
  * DefaultContent
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Stepit\Bundle\AppBundle\Entity\DefaultContentRepository")
+ * @ORM\Entity(repositoryClass="Stepit\Bundle\AppBundle\Entity\Repository\DefaultContentRepository")
  */
 class DefaultContent
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Stepit\Bundle\AppBundle\Entity;
+namespace Stepit\Bundle\AppBundle\Entity\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
