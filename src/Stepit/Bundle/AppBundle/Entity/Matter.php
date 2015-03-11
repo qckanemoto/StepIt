@@ -25,9 +25,9 @@ class Matter
     private $id;
 
     /**
-     * @var string
+     * @var string[]
      *
-     * @ORM\Column(name="owners", type="string", length=255)
+     * @ORM\Column(name="owners", type="simple_array", length=65535)
      */
     private $owners;
 
@@ -74,10 +74,10 @@ class Matter
     /**
      * Set owners
      *
-     * @param string $owners
+     * @param string[] $owners
      * @return Matter
      */
-    public function setOwners($owners)
+    public function setOwners(array $owners)
     {
         $this->owners = $owners;
 
@@ -87,7 +87,7 @@ class Matter
     /**
      * Get owners
      *
-     * @return string
+     * @return string[]
      */
     public function getOwners()
     {
