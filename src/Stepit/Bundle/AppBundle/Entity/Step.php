@@ -208,4 +208,20 @@ class Step
     {
         return $this->contents;
     }
+
+    /**
+     * @param DefaultContent[] $defaultContents
+     */
+    public function setDefaultContents($defaultContents)
+    {
+        $this->defaultContents = $defaultContents;
+    }
+
+    /**
+     * @return DefaultContent[]
+     */
+    public function getDefaultContents()
+    {
+        return $this->defaultContents;
+    }
 }
