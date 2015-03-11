@@ -1,4 +1,3 @@
 stepit_app:
-    resource: "@StepitAppBundle/Controller/"
-    type:     annotation
+    resource: "@StepitAppBundle/Resources/config/routing.yml"
     prefix:   /
