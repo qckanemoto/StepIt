@@ -5,7 +5,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -72,3 +72,12 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# EasyAdminBundle
+easy_admin:
+    entities:
+        - Stepit\Bundle\AppBundle\Entity\Project
+        - Stepit\Bundle\AppBundle\Entity\Step
+        - Stepit\Bundle\AppBundle\Entity\Matter
+        - Stepit\Bundle\AppBundle\Entity\DefaultContent
+        - Stepit\Bundle\AppBundle\Entity\Content

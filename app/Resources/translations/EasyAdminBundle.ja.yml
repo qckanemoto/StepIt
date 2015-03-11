@@ -1,0 +1,38 @@
+header:
+  close: 閉じる
+  logged_in_as: Logged in as
+
+entity:
+  create: %entity% を新規作成
+  edit: 編集
+  delete: 削除
+  save_changes: 保存
+
+list:
+  actions: 操作
+  no_results: データがありません
+  results_found: <strong>%count%</strong> 件の検索結果
+  search: 検索
+
+link:
+  back_to_listing: 一覧に戻る
+
+paginator:
+  first: 最初
+  previous: 前へ
+  next: 次へ
+  last: 最後
+  counter: <strong>%start%</strong> - <strong>%end%</strong> of <strong>%results%</strong>
+
+actions:
+  cancel: キャンセル
+  list: 一覧
+  edit: 編集
+  new: 新規作成
+  show: 表示
+  search: 検索
+  delete: 削除
+
+delete_modal:
+  title: 本当に削除してよいですか？
+  content: これ以上 undo できません

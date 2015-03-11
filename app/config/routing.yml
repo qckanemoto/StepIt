@@ -1,3 +1,8 @@
 stepit_app:
     resource: "@StepitAppBundle/Resources/config/routing.yml"
     prefix:   /
+
+easy_admin:
+    resource: "@EasyAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
