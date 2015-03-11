@@ -2,7 +2,3 @@ stepit_app:
     resource: "@StepitAppBundle/Controller/"
     type:     annotation
     prefix:   /
-
-app:
-    resource: @AppBundle/Controller/
-    type:     annotation
