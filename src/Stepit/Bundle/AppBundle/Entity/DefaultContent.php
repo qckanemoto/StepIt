@@ -42,7 +42,7 @@ class DefaultContent
      * @var Step
      *
      * @ORM\ManyToOne(targetEntity="Step", inversedBy="default_contents")
-     * @ORM\JoinColumn(name="step_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="step_id", referencedColumnName="id", nullable=false)
      */
     private $step;
 
@@ -117,5 +117,13 @@ class DefaultContent
     public function getStep()
     {
         return $this->step;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->value;
     }
 }

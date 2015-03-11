@@ -34,14 +34,14 @@ class Step
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="link", type="string", length=255)
+     * @ORM\Column(name="link", type="string", length=255, nullable=true)
      */
     private $link;
 
@@ -56,7 +56,7 @@ class Step
      * @var Project
      *
      * @ORM\ManyToOne(targetEntity="Project", inversedBy="steps")
-     * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="project_id", referencedColumnName="id", nullable=false)
      */
     private $project;
 
@@ -223,5 +223,13 @@ class Step
     public function getDefaultContents()
     {
         return $this->defaultContents;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
     }
 }

@@ -15,6 +15,9 @@ class Matter
 {
     use Timestampable;
 
+    const STATE_OPEN = 'open';
+    const STATE_CLOSED = 'closed';
+
     /**
      * @var integer
      *
@@ -25,16 +28,23 @@ class Matter
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
      * @var string[]
      *
-     * @ORM\Column(name="owners", type="simple_array", length=65535)
+     * @ORM\Column(name="owners", type="simple_array", length=65535, nullable=true)
      */
     private $owners;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=255)
+     * @ORM\Column(name="type", type="string", length=255, nullable=true)
      */
     private $type;
 
@@ -49,7 +59,7 @@ class Matter
      * @var Project
      *
      * @ORM\ManyToOne(targetEntity="Project", inversedBy="matters")
-     * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="project_id", referencedColumnName="id", nullable=false)
      */
     private $project;
 
@@ -69,6 +79,29 @@ class Matter
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Matter
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -170,5 +203,13 @@ class Matter
     public function getContents()
     {
         return $this->contents;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
     }
 }

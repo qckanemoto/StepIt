@@ -35,7 +35,7 @@ class Content
      * @var Matter
      *
      * @ORM\ManyToOne(targetEntity="Matter", inversedBy="contents")
-     * @ORM\JoinColumn(name="matter_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="matter_id", referencedColumnName="id", nullable=false)
      */
     private $matter;
 
@@ -43,7 +43,7 @@ class Content
      * @var Step
      *
      * @ORM\ManyToOne(targetEntity="Step", inversedBy="contents")
-     * @ORM\JoinColumn(name="step_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="step_id", referencedColumnName="id", nullable=false)
      */
     private $step;
 
@@ -111,5 +111,13 @@ class Content
     public function getStep()
     {
         return $this->step;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->value;
     }
 }
