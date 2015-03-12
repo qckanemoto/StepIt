@@ -1,38 +1,37 @@
-header:
-  close: 閉じる
-  logged_in_as: Logged in as
+action:
+    new: 新規作成
+    show: 表示
+    edit: 編集
+    search: 検索
+    delete: 削除
+    save_changes: 保存
+    cancel: キャンセル
+    back_to_listing: 一覧に戻る
 
-entity:
-  create: %entity% を新規作成
-  edit: 編集
-  delete: 削除
-  save_changes: 保存
+new.page_title: %entity_name% を新規作成
+show.page_title: %entity_name% (#%entity_id%)
+edit.page_title: %entity_name% (#%entity_id%) を編集
+list.page_title: %entity_name% 一覧
+search.page_title: <strong>%count%</strong> 件の検索結果
+
+search:
+    no_results: データがありません
 
 list:
-  actions: 操作
-  no_results: データがありません
-  results_found: <strong>%count%</strong> 件の検索結果
-  search: 検索
-
-link:
-  back_to_listing: 一覧に戻る
+    row_actions: 操作
+    search_placeholder: 検索
 
 paginator:
-  first: 最初
-  previous: 前へ
-  next: 次へ
-  last: 最後
-  counter: <strong>%start%</strong> - <strong>%end%</strong> of <strong>%results%</strong>
+    first: 最初へ
+    previous: 前へ
+    next: 次へ
+    last: 最後へ
+    counter: <strong>%start%</strong> - <strong>%end%</strong> of <strong>%results%</strong>
 
-actions:
-  cancel: キャンセル
-  list: 一覧
-  edit: 編集
-  new: 新規作成
-  show: 表示
-  search: 検索
-  delete: 削除
+header:
+    close: 閉じる
+    logged_in_as: Logged in as
 
 delete_modal:
-  title: 本当に削除してよいですか？
-  content: これ以上 undo できません
+    title: 本当に削除してよいですか？
+    content: これ以上 undo できません
