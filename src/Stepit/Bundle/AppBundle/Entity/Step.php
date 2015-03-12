@@ -4,6 +4,7 @@ namespace Stepit\Bundle\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Step
@@ -27,6 +28,8 @@ class Step
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -47,6 +50,9 @@ class Step
 
     /**
      * @var integer
+     *
+     * @Assert\NotBlank()
+     * @Assert\Type("int")
      *
      * @ORM\Column(name="sequence", type="integer")
      */

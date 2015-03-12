@@ -4,6 +4,7 @@ namespace Stepit\Bundle\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * DefaultContent
@@ -27,12 +28,16 @@ class DefaultContent
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     *
      * @ORM\Column(name="matter_type", type="string", length=255)
      */
     private $matterType;
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank()
      *
      * @ORM\Column(name="value", type="string", length=255)
      */

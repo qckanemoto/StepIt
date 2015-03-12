@@ -4,6 +4,7 @@ namespace Stepit\Bundle\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Matter
@@ -30,6 +31,8 @@ class Matter
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -51,6 +54,9 @@ class Matter
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     * @Assert\Choice(callback="getStateChoices")
+     *
      * @ORM\Column(name="state", type="string", length=255)
      */
     private $state;
@@ -70,6 +76,11 @@ class Matter
      */
     private $contents;
 
+
+    public function __construct()
+    {
+        $this->state = self::STATE_OPEN;
+    }
 
     /**
      * Get id
@@ -211,5 +222,13 @@ class Matter
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getStateChoices()
+    {
+        return [self::STATE_OPEN, self::STATE_CLOSED];
     }
 }
