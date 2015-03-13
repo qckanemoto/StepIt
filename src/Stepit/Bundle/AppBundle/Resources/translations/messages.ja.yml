@@ -1,0 +1,13 @@
+project:
+  list: プロジェクト一覧
+  name: プロジェクト名
+  description: プロジェクト概要
+
+matter:
+  id: ID
+  name: 案件名
+  owners: 担当者
+
+done: 完了
+
+admin: 管理画面

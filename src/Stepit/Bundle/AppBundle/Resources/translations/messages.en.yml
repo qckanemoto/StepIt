@@ -1,0 +1,13 @@
+project:
+  list: Projects
+  name: Project name
+  description: Project description
+
+matter:
+  id: Id
+  name: Matter name
+  owners: Matter owners
+
+done: Done
+
+admin: Admin
