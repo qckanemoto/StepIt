@@ -69,14 +69,14 @@ class Step
     /**
      * @var Content[]
      *
-     * @ORM\OneToMany(targetEntity="Content", mappedBy="step")
+     * @ORM\OneToMany(targetEntity="Content", mappedBy="step", cascade={"all"})
      */
     private $contents;
 
     /**
      * @var DefaultContent[]
      *
-     * @ORM\OneToMany(targetEntity="DefaultContent", mappedBy="step")
+     * @ORM\OneToMany(targetEntity="DefaultContent", mappedBy="step", cascade={"all"})
      */
     private $defaultContents;
 

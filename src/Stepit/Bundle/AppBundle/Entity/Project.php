@@ -44,14 +44,14 @@ class Project
     /**
      * @var Step[]
      *
-     * @ORM\OneToMany(targetEntity="Step", mappedBy="project")
+     * @ORM\OneToMany(targetEntity="Step", mappedBy="project", cascade={"all"})
      */
     private $steps;
 
     /**
      * @var Matter[]
      *
-     * @ORM\OneToMany(targetEntity="Matter", mappedBy="project")
+     * @ORM\OneToMany(targetEntity="Matter", mappedBy="project", cascade={"all"})
      */
     private $matters;
 

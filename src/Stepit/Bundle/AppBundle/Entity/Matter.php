@@ -79,7 +79,7 @@ class Matter
     /**
      * @var Content[]
      *
-     * @ORM\OneToMany(targetEntity="Content", mappedBy="matter")
+     * @ORM\OneToMany(targetEntity="Content", mappedBy="matter", cascade={"all"})
      */
     private $contents;
 
