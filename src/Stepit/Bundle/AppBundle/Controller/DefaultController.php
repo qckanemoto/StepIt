@@ -26,7 +26,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/projects/{project}", name="stepit_project")
+     * @Route("/projects/{project}", name="stepit_app_default_project")
      * @Template()
      *
      * @ParamConverter("project", class="StepitAppBundle:Project")

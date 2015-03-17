@@ -17,7 +17,7 @@
         <tbody>
         {% for project in projects %}
             <tr>
-                <td><a href="{{ path('stepit_project', { project: project.id }) }}">{{ project.name }}</a></td>
+                <td><a href="{{ path('stepit_app_default_project', { project: project.id }) }}">{{ project.name }}</a></td>
                 <td>{{ project.description }}</td>
             </tr>
         {% endfor %}
