@@ -62,7 +62,7 @@
                             {% if contents[matter.id][step.id] is defined %}
                                 {{ contents[matter.id][step.id].value }}
                             {% else %}
-                                <a class="btn btn-success btn-xs" href="">{{ 'done' | trans }}</a>
+                                <p class="btn btn-success btn-xs btn-done" data-matter-id="{{ matter.id }}" data-step-id="{{ step.id }}">{{ 'done' | trans }}</p>
                             {% endif %}
                         </td>
                     {% endfor %}
@@ -83,5 +83,7 @@
     '@StepitAppBundle/Resources/public/js/script.js'
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { 'callback': 'fos.Router.setData' }) }}"></script>
     {% endjavascripts %}
 {% endblock %}

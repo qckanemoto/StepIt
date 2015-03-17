@@ -1,3 +1,0 @@
-stepit_app:
-  resource: "@StepitAppBundle/Controller/"
-  type: annotation

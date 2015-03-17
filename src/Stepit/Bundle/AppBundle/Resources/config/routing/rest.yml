@@ -1,0 +1,7 @@
+stepit_app_rest_content:
+  resource: "@StepitAppBundle/Controller/Rest/ContentController.php"
+  type: rest
+  prefix: api/v1
+  name_prefix: api_v1_stepit_app_
+  options:
+    expose: true

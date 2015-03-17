@@ -3,6 +3,7 @@
 namespace Stepit\Bundle\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serialize;
 use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -39,6 +40,8 @@ class Content
      *
      * @ORM\ManyToOne(targetEntity="Matter", inversedBy="contents")
      * @ORM\JoinColumn(name="matter_id", referencedColumnName="id", nullable=false)
+     *
+     * @Serialize\Exclude()
      */
     private $matter;
 
@@ -47,6 +50,8 @@ class Content
      *
      * @ORM\ManyToOne(targetEntity="Step", inversedBy="contents")
      * @ORM\JoinColumn(name="step_id", referencedColumnName="id", nullable=false)
+     *
+     * @Serialize\Exclude()
      */
     private $step;
 
