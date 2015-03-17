@@ -34,4 +34,4 @@ header:
 
 delete_modal:
     title: 本当に削除してよいですか？
-    content: これ以上 undo できません
+    content: この操作は取り消せません
