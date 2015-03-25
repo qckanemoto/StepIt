@@ -16,22 +16,19 @@ class ContentType extends AbstractType
     {
         $builder
             ->add('value')
-            ->add('matter', 'entity', [
-                'class' => 'Steppie\Bundle\AppBundle\Entity\Matter',
-            ])
-            ->add('step', 'entity', [
-                'class' => 'Steppie\Bundle\AppBundle\Entity\Step',
-            ])
+            ->add('matter')
+            ->add('step')
         ;
     }
 
+    /**
+     * @param OptionsResolverInterface $resolver
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver
-            ->setDefaults([
-                'data_class' => 'Steppie\Bundle\AppBundle\Entity\Content',
-            ])
-        ;
+        $resolver->setDefaults(array(
+            'data_class' => 'Steppie\Bundle\AppBundle\Entity\Content'
+        ));
     }
 
     /**
@@ -39,6 +36,6 @@ class ContentType extends AbstractType
      */
     public function getName()
     {
-        return 'steppie_app_content';
+        return 'steppie_bundle_appbundle_content';
     }
 }
