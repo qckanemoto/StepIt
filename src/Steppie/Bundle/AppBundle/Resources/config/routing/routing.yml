@@ -1,0 +1,7 @@
+steppie_app:
+  resource: "@SteppieAppBundle/Controller/"
+  type: annotation
+
+steppie_app_rest:
+  resource: "@SteppieAppBundle/Resources/config/routing/rest.yml"
+  type: rest

@@ -1,7 +1,0 @@
-stepit_app:
-  resource: "@StepitAppBundle/Controller/"
-  type: annotation
-
-stepit_app_rest:
-  resource: "@StepitAppBundle/Resources/config/routing/rest.yml"
-  type: rest
