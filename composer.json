@@ -1,10 +1,12 @@
 {
-    "name": "symfony/framework-standard-edition",
+    "name": "qckanemoto/steppie",
     "license": "MIT",
     "type": "project",
-    "description": "The \"Symfony Standard Edition\" distribution",
     "autoload": {
-        "psr-0": { "": "src/", "SymfonyStandard": "app/" }
+        "psr-0": {
+            "": "src/",
+            "SymfonyStandard": "app/"
+        }
     },
     "require": {
         "php": ">=5.3.3",
@@ -53,6 +55,10 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
             "Mopa\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::postInstallSymlinkTwitterBootstrap"
+        ],
+        "compile": [
+            "php app/console assetic:dump",
+            "php app/console doctrine:schema:update --force"
         ]
     },
     "config": {
@@ -63,10 +69,14 @@
         "symfony-web-dir": "web",
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
-        },
-        "branch-alias": {
-            "dev-master": "2.6-dev"
+            "file": "app/config/parameters.yml",
+            "env-map": {
+                "database_host": "APP_DATABASE_HOST",
+                "database_port": "APP_DATABASE_PORT",
+                "database_name": "APP_DATABASE_NAME",
+                "database_user": "APP_DATABASE_USER",
+                "database_password": "APP_DATABASE_PASSWORD"
+            }
         }
     }
 }
