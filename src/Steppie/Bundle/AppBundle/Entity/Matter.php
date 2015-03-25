@@ -2,6 +2,8 @@
 
 namespace Steppie\Bundle\AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -84,14 +86,16 @@ class Matter
     private $contents;
 
 
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         $this->state = self::STATE_OPEN;
+        $this->contents = new ArrayCollection;
     }
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -100,8 +104,6 @@ class Matter
     }
 
     /**
-     * Set name
-     *
      * @param string $name
      * @return Matter
      */
@@ -113,8 +115,6 @@ class Matter
     }
 
     /**
-     * Get name
-     *
      * @return string
      */
     public function getName()
@@ -123,8 +123,6 @@ class Matter
     }
 
     /**
-     * Set description
-     *
      * @param string $description
      * @return Matter
      */
@@ -136,8 +134,6 @@ class Matter
     }
 
     /**
-     * Get description
-     *
      * @return string
      */
     public function getDescription()
@@ -146,8 +142,6 @@ class Matter
     }
 
     /**
-     * Set owners
-     *
      * @param string[] $owners
      * @return Matter
      */
@@ -159,8 +153,6 @@ class Matter
     }
 
     /**
-     * Get owners
-     *
      * @return string[]
      */
     public function getOwners()
@@ -169,8 +161,6 @@ class Matter
     }
 
     /**
-     * Set type
-     *
      * @param string $type
      * @return Matter
      */
@@ -182,8 +172,6 @@ class Matter
     }
 
     /**
-     * Get type
-     *
      * @return string
      */
     public function getType()
@@ -192,8 +180,6 @@ class Matter
     }
 
     /**
-     * Set state
-     *
      * @param string $state
      * @return Matter
      */
@@ -205,8 +191,6 @@ class Matter
     }
 
     /**
-     * Get state
-     *
      * @return string
      */
     public function getState()
@@ -231,15 +215,26 @@ class Matter
     }
 
     /**
-     * @param Content[] $contents
+     * @param Content $content
+     * @return Matter
      */
-    public function setContents($contents)
+    public function addContent(Content $content)
     {
-        $this->contents = $contents;
+        $this->contents[] = $content;
+
+        return $this;
     }
 
     /**
-     * @return Content[]
+     * @param Content $content
+     */
+    public function removeContent(Content $content)
+    {
+        $this->contents->removeElement($content);
+    }
+
+    /**
+     * @return Collection
      */
     public function getContents()
     {
@@ -259,6 +254,9 @@ class Matter
      */
     public static function getStateChoices()
     {
-        return [self::STATE_OPEN, self::STATE_CLOSED];
+        return [
+            self::STATE_OPEN,
+            self::STATE_CLOSED,
+        ];
     }
 }

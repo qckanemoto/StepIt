@@ -2,6 +2,8 @@
 
 namespace Steppie\Bundle\AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -42,14 +44,14 @@ class Project
     private $description;
 
     /**
-     * @var Step[]
+     * @var Step[]|Collection
      *
      * @ORM\OneToMany(targetEntity="Step", mappedBy="project", cascade={"all"})
      */
     private $steps;
 
     /**
-     * @var Matter[]
+     * @var Matter[]|Collection
      *
      * @ORM\OneToMany(targetEntity="Matter", mappedBy="project", cascade={"all"})
      */
@@ -57,8 +59,15 @@ class Project
 
 
     /**
-     * Get id
-     *
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->steps = new ArrayCollection;
+        $this->matters = new ArrayCollection;
+    }
+
+    /**
      * @return integer
      */
     public function getId()
@@ -67,8 +76,6 @@ class Project
     }
 
     /**
-     * Set name
-     *
      * @param string $name
      * @return Project
      */
@@ -80,8 +87,6 @@ class Project
     }
 
     /**
-     * Get name
-     *
      * @return string
      */
     public function getName()
@@ -90,8 +95,6 @@ class Project
     }
 
     /**
-     * Set description
-     *
      * @param string $description
      * @return Project
      */
@@ -103,8 +106,6 @@ class Project
     }
 
     /**
-     * Get description
-     *
      * @return string
      */
     public function getDescription()
@@ -113,15 +114,26 @@ class Project
     }
 
     /**
-     * @param Step[] $steps
+     * @param Step $step
+     * @return Project
      */
-    public function setSteps($steps)
+    public function addStep(Step $step)
     {
-        $this->steps = $steps;
+        $this->steps[] = $step;
+
+        return $this;
     }
 
     /**
-     * @return Step[]
+     * @param Step $step
+     */
+    public function removeStep(Step $step)
+    {
+        $this->steps->removeElement($step);
+    }
+
+    /**
+     * @return Collection
      */
     public function getSteps()
     {
@@ -129,15 +141,26 @@ class Project
     }
 
     /**
-     * @param Matter[] $matters
+     * @param Matter $matter
+     * @return Project
      */
-    public function setMatters($matters)
+    public function addMatter(Matter $matter)
     {
-        $this->matters = $matters;
+        $this->matters[] = $matter;
+
+        return $this;
     }
 
     /**
-     * @return Matter[]
+     * @param Matter $matter
+     */
+    public function removeMatter(Matter $matter)
+    {
+        $this->matters->removeElement($matter);
+    }
+
+    /**
+     * @return Collection
      */
     public function getMatters()
     {

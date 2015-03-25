@@ -2,6 +2,8 @@
 
 namespace Steppie\Bundle\AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -67,14 +69,14 @@ class Step
     private $project;
 
     /**
-     * @var Content[]
+     * @var Content[]|Collection
      *
      * @ORM\OneToMany(targetEntity="Content", mappedBy="step", cascade={"all"})
      */
     private $contents;
 
     /**
-     * @var DefaultContent[]
+     * @var DefaultContent[]|Collection
      *
      * @ORM\OneToMany(targetEntity="DefaultContent", mappedBy="step", cascade={"all"})
      */
@@ -82,8 +84,15 @@ class Step
 
 
     /**
-     * Get id
-     *
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->contents = new ArrayCollection;
+        $this->defaultContents = new ArrayCollection;
+    }
+
+    /**
      * @return integer
      */
     public function getId()
@@ -92,8 +101,6 @@ class Step
     }
 
     /**
-     * Set name
-     *
      * @param string $name
      * @return Step
      */
@@ -105,8 +112,6 @@ class Step
     }
 
     /**
-     * Get name
-     *
      * @return string
      */
     public function getName()
@@ -115,8 +120,6 @@ class Step
     }
 
     /**
-     * Set description
-     *
      * @param string $description
      * @return Step
      */
@@ -128,8 +131,6 @@ class Step
     }
 
     /**
-     * Get description
-     *
      * @return string
      */
     public function getDescription()
@@ -138,8 +139,6 @@ class Step
     }
 
     /**
-     * Set link
-     *
      * @param string $link
      * @return Step
      */
@@ -151,8 +150,6 @@ class Step
     }
 
     /**
-     * Get link
-     *
      * @return string
      */
     public function getLink()
@@ -161,8 +158,6 @@ class Step
     }
 
     /**
-     * Set sequence
-     *
      * @param integer $sequence
      * @return Step
      */
@@ -174,8 +169,6 @@ class Step
     }
 
     /**
-     * Get sequence
-     *
      * @return integer
      */
     public function getSequence()
@@ -200,15 +193,26 @@ class Step
     }
 
     /**
-     * @param Content[] $contents
+     * @param Content $content
+     * @return Step
      */
-    public function setContents($contents)
+    public function addContent(Content $content)
     {
-        $this->contents = $contents;
+        $this->contents[] = $content;
+
+        return $this;
     }
 
     /**
-     * @return Content[]
+     * @param Content $content
+     */
+    public function removeContent(Content $content)
+    {
+        $this->contents->removeElement($content);
+    }
+
+    /**
+     * @return Collection
      */
     public function getContents()
     {
@@ -216,15 +220,26 @@ class Step
     }
 
     /**
-     * @param DefaultContent[] $defaultContents
+     * @param DefaultContent $defaultContent
+     * @return Step
      */
-    public function setDefaultContents($defaultContents)
+    public function addDefaultContent(DefaultContent $defaultContent)
     {
-        $this->defaultContents = $defaultContents;
+        $this->defaultContents[] = $defaultContent;
+
+        return $this;
     }
 
     /**
-     * @return DefaultContent[]
+     * @param DefaultContent $defaultContent
+     */
+    public function removeDefaultContent(DefaultContent $defaultContent)
+    {
+        $this->defaultContents->removeElement($defaultContent);
+    }
+
+    /**
+     * @return Collection
      */
     public function getDefaultContents()
     {

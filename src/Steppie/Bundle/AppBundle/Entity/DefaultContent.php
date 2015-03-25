@@ -53,8 +53,6 @@ class DefaultContent
 
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -63,8 +61,6 @@ class DefaultContent
     }
 
     /**
-     * Set matterType
-     *
      * @param string $matterType
      * @return DefaultContent
      */
@@ -76,8 +72,6 @@ class DefaultContent
     }
 
     /**
-     * Get matterType
-     *
      * @return string
      */
     public function getMatterType()
@@ -86,8 +80,6 @@ class DefaultContent
     }
 
     /**
-     * Set value
-     *
      * @param string $value
      * @return DefaultContent
      */
@@ -99,8 +91,6 @@ class DefaultContent
     }
 
     /**
-     * Get value
-     *
      * @return string
      */
     public function getValue()

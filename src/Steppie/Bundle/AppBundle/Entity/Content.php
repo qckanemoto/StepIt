@@ -57,8 +57,6 @@ class Content
 
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -67,8 +65,6 @@ class Content
     }
 
     /**
-     * Set value
-     *
      * @param string $value
      * @return Content
      */
@@ -80,8 +76,6 @@ class Content
     }
 
     /**
-     * Get value
-     *
      * @return string
      */
     public function getValue()
