@@ -83,11 +83,11 @@ swiftmailer:
 # EasyAdminBundle
 easy_admin:
     entities:
-        - Stepit\Bundle\AppBundle\Entity\Project
-        - Stepit\Bundle\AppBundle\Entity\Step
-        - Stepit\Bundle\AppBundle\Entity\Matter
-        - Stepit\Bundle\AppBundle\Entity\DefaultContent
-        - Stepit\Bundle\AppBundle\Entity\Content
+        - Steppie\Bundle\AppBundle\Entity\Project
+        - Steppie\Bundle\AppBundle\Entity\Step
+        - Steppie\Bundle\AppBundle\Entity\Matter
+        - Steppie\Bundle\AppBundle\Entity\DefaultContent
+        - Steppie\Bundle\AppBundle\Entity\Content
 
 # MopaBootstrapBundle
 mopa_bootstrap:
