@@ -20,3 +20,9 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
 
     site_name:         Steppie
+
+    admin_label_project: Project
+    admin_label_step: Step
+    admin_label_matter: Matter
+    admin_label_content: Content
+    admin_label_default_content: Default Content
