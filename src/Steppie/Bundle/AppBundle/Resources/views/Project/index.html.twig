@@ -1,0 +1,26 @@
+{% extends 'SteppieAppBundle::layout.html.twig' %}
+
+{% block page_header %}
+    <ol class="breadcrumb">
+        <li class="active">{{ 'project.list' | trans }}</li>
+    </ol>
+{% endblock %}
+
+{% block content_row %}
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>{{ 'project.name' | trans }}</th>
+            <th>{{ 'project.description' | trans }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for project in projects %}
+            <tr>
+                <td><a href="{{ path('steppie_app_project_main', { project: project.id }) }}">{{ project.name }}</a></td>
+                <td>{{ project.description }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
