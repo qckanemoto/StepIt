@@ -6,6 +6,8 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Steppie\Bundle\AppBundle\Entity\Content;
+use Steppie\Bundle\AppBundle\Event\ContentEvent;
+use Steppie\Bundle\AppBundle\Event\ContentEventNames;
 use Steppie\Bundle\AppBundle\Form\Type\ContentType;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -28,6 +30,8 @@ class ContentController extends FOSRestController
             $em->persist($content);
             $em->flush();
 
+            $this->dispatchEvent(ContentEventNames::UPDATED, $content);
+
             return $content;
         }
 
@@ -49,6 +53,8 @@ class ContentController extends FOSRestController
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($content);
             $em->flush();
+
+            $this->dispatchEvent(ContentEventNames::UPDATED, $content);
 
             return $content;
         }
@@ -94,5 +100,14 @@ class ContentController extends FOSRestController
             'method' => $method,
             'csrf_protection' => false,
         ]);
+    }
+
+    /**
+     * @param $eventName
+     * @param Content $content
+     */
+    private function dispatchEvent($eventName, Content $content)
+    {
+        $this->get('event_dispatcher')->dispatch($eventName, new ContentEvent($content));
     }
 }

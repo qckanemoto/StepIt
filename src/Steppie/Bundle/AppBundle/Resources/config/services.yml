@@ -1,0 +1,7 @@
+services:
+  steppie_app.subscriber.content_event:
+    class: Steppie\Bundle\AppBundle\Event\Subscriber\ContentEventSubscriber
+    arguments:
+      - @doctrine.orm.entity_manager
+    tags:
+      - { name: kernel.event_subscriber }
