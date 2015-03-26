@@ -86,27 +86,22 @@ easy_admin:
         datetime: Y-m-d H:i:s
     entities:
         Project:
-            label: %admin_label_project%
             class: Steppie\Bundle\AppBundle\Entity\Project
             form:
                 fields: [ name, description ]
         Step:
-            label: %admin_label_step%
             class: Steppie\Bundle\AppBundle\Entity\Step
             form:
                 fields: [ name, description, link, sequence, project ]
         Matter:
-            label: %admin_label_matter%
             class: Steppie\Bundle\AppBundle\Entity\Matter
             form:
                 fields: [ name, description, type, state, project ]
         Content:
-            label: %admin_label_content%
             class: Steppie\Bundle\AppBundle\Entity\Content
             form:
                 fields: [ value, matter, step ]
         DefaultContent:
-            label: %admin_label_default_content%
             class: Steppie\Bundle\AppBundle\Entity\DefaultContent
             form:
                 fields: [ matter_type, value, step ]
