@@ -15,7 +15,9 @@ class ContentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('value')
+            ->add('value', null, [
+                'empty_data' => date('Y/m/d'),
+            ])
             ->add('matter')
             ->add('step')
         ;
