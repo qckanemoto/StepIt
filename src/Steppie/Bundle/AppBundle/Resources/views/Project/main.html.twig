@@ -83,10 +83,16 @@
             <div class="edit-content">
                 <a class="link"></a>
                 <div class="form has-feedback" style="display:none;">
-                    <input class="form-control input-sm" type="text" data-content-id="" data-matter-id="" data-step-id="" value=""/>
+                    <input class="form-control input-sm" type="text"/>
                     <span class="form-control-feedback" style="display:none;"><i class="fa fa-spinner fa-spin"></i></span>
                 </div>
             </div>
+            {% endfilter %}
+        </div>
+
+        <div id="btn-done-prototype">
+            {% filter escape %}
+            <p class="btn btn-success btn-xs btn-done">{{ 'done'|trans }}</p>
             {% endfilter %}
         </div>
     </div>

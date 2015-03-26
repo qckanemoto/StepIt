@@ -2,7 +2,7 @@ $(function () {
     $('table.table-steppie').stickyTableHeaders();
 
     // 'Done' button action.
-    $('.btn-done').on('click', function () {
+    $(document).on('click', '.btn-done', function () {
         var matterId = $(this).data('matter-id');
         var stepId = $(this).data('step-id');
 
@@ -45,29 +45,48 @@ $(function () {
         $(this).attr('readonly', true);
         $(this).next('.form-control-feedback').show();
 
-        $.ajax({
-            type: 'PUT',
-            url: Routing.generate('api_v1_steppie_app_put_content', { content: contentId, _format: 'json' }),
-            data: {
-                value: $(this).val(),
-                matter: matterId,
-                step: stepId
-            },
-            dataType: 'json',
-            context: this
+        if ($(this).val() == '') {
+            $.ajax({
+                type: 'DELETE',
+                url: Routing.generate('api_v1_steppie_app_delete_content', { content: contentId, _format: 'json' }),
+                data: null,
+                dataType: 'json',
+                context: this
 
-        }).done(function (data) {
-            var $prototype = $($('#edit-content-prototype').text());
-            $prototype.find('.link').text(data.value);
-            $prototype.find('.form input')
-                .data('content-id', data.id)
-                .data('matter-id', data.matter.id)
-                .data('step-id', data.step.id)
-                .val(data.value)
-            ;
-            $(this).closest('td').width('');
-            $(this).closest('td').html($prototype);
-        });
+            }).done(function (data) {
+                var $prototype = $($('#btn-done-prototype').text());
+                $prototype
+                    .data('matter-id', data.matter.id)
+                    .data('step-id', data.step.id)
+                ;
+                $(this).closest('td').width('');
+                $(this).closest('td').html($prototype);
+            });
+        } else {
+            $.ajax({
+                type: 'PUT',
+                url: Routing.generate('api_v1_steppie_app_put_content', { content: contentId, _format: 'json' }),
+                data: {
+                    value: $(this).val(),
+                    matter: matterId,
+                    step: stepId
+                },
+                dataType: 'json',
+                context: this
+
+            }).done(function (data) {
+                var $prototype = $($('#edit-content-prototype').text());
+                $prototype.find('.link').text(data.value);
+                $prototype.find('.form input')
+                    .data('content-id', data.id)
+                    .data('matter-id', data.matter.id)
+                    .data('step-id', data.step.id)
+                    .val(data.value)
+                ;
+                $(this).closest('td').width('');
+                $(this).closest('td').html($prototype);
+            });
+        }
     });
 
     // toggle edit content link and form.
