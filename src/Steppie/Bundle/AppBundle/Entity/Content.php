@@ -10,7 +10,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Content
  *
- * @ORM\Table()
+ * @ORM\Table(uniqueConstraints={
+ *   @ORM\UniqueConstraint(name="content_matter_step_index", columns={"matter_id", "step_id"})
+ * })
  * @ORM\Entity(repositoryClass="Steppie\Bundle\AppBundle\Entity\Repository\ContentRepository")
  */
 class Content
