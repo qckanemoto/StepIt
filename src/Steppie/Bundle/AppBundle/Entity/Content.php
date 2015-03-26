@@ -40,8 +40,6 @@ class Content
      *
      * @ORM\ManyToOne(targetEntity="Matter", inversedBy="contents")
      * @ORM\JoinColumn(name="matter_id", referencedColumnName="id", nullable=false)
-     *
-     * @Serialize\Exclude()
      */
     private $matter;
 
@@ -50,8 +48,6 @@ class Content
      *
      * @ORM\ManyToOne(targetEntity="Step", inversedBy="contents")
      * @ORM\JoinColumn(name="step_id", referencedColumnName="id", nullable=false)
-     *
-     * @Serialize\Exclude()
      */
     private $step;
 

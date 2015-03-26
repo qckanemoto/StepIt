@@ -5,3 +5,5 @@ steppie_app:
 steppie_app_rest:
   resource: "@SteppieAppBundle/Resources/config/routing/rest.yml"
   type: rest
+  options:
+    expose: true

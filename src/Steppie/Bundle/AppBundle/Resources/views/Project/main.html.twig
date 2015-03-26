@@ -60,7 +60,14 @@
                     {% for matter in matters %}
                         <td>
                             {% if contents[matter.id][step.id] is defined %}
-                                {{ contents[matter.id][step.id].value }}
+                                <div class="edit-content">
+                                    {% set content = contents[matter.id][step.id] %}
+                                    <a class="link">{{ content.value }}</a>
+                                    <div class="form has-feedback" style="display:none;">
+                                        <input class="form-control input-sm" type="text" data-content-id="{{ content.id }}" data-matter-id="{{ matter.id }}" data-step-id="{{ step.id }}" value="{{ content.value }}"/>
+                                        <span class="form-control-feedback" style="display:none;"><i class="fa fa-spinner fa-spin"></i></span>
+                                    </div>
+                                </div>
                             {% else %}
                                 <p class="btn btn-success btn-xs btn-done" data-matter-id="{{ matter.id }}" data-step-id="{{ step.id }}">{{ 'done'|trans }}</p>
                             {% endif %}
@@ -70,6 +77,18 @@
             {% endfor %}
             </tbody>
         </table>
+
+        <div id="edit-content-prototype">
+            {% filter escape %}
+            <div class="edit-content">
+                <a class="link"></a>
+                <div class="form has-feedback" style="display:none;">
+                    <input class="form-control input-sm" type="text" data-content-id="" data-matter-id="" data-step-id="" value=""/>
+                    <span class="form-control-feedback" style="display:none;"><i class="fa fa-spinner fa-spin"></i></span>
+                </div>
+            </div>
+            {% endfilter %}
+        </div>
     </div>
 {% endblock %}
 

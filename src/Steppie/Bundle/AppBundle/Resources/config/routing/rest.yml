@@ -3,5 +3,3 @@ steppie_app_rest_content:
   type: rest
   prefix: api/v1
   name_prefix: api_v1_steppie_app_
-  options:
-    expose: true
