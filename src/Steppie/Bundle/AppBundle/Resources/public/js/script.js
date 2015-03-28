@@ -1,5 +1,8 @@
 $(function () {
     $('table.table-steppie').stickyTableHeaders();
+    $('select').select2({
+        placeholder: $(this).data('placeholder')
+    });
 
     // 'Done' button action.
     $(document).on('click', '.btn-done', function () {

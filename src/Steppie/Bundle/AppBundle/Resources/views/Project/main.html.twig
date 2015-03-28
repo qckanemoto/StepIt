@@ -5,6 +5,30 @@
         <li><a href="{{ path('steppie_app_project_index') }}">{{ 'project.list'|trans }}</a></li>
         <li class="active">{{ project.name }}</li>
     </ol>
+
+    <div class="clearfix">
+        <form class="form-inline pull-left" action="{{ path('steppie_app_project_main', { project: project.id }) }}" id="select-owners-form">
+            <div class="form-group">
+                <select class="form-control" name="owners[]" data-placeholder="{{ 'select.owners.label'|trans }}" multiple style="width:250px">
+                    {% for name in owners.all %}
+                        <option value="{{ name }}" {% if name in owners.selected %}selected{% endif %}>{{ name }}</option>
+                    {% endfor %}
+                </select>
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    <a class="btn btn-default" href="{{ path('steppie_app_project_main', { project: project.id }) }}"><i class="fa fa-ban"></i></a>
+                </div>
+            </div>
+        </form>
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li><a href="">{{ 'matter.new'|trans }}</a></li>
+                <li><a href="">{{ 'matter.list'|trans }}</a></li>
+                <li><a href="">{{ 'step.edit'|trans }}</a></li>
+            </ul>
+        </div>
+    </div>
 {% endblock %}
 
 {% block content_row %}
@@ -98,6 +122,15 @@
     </div>
 {% endblock %}
 
+{% block head_style %}
+    {% stylesheets filter='less,cssrewrite'
+    '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.2/css/select2.min.css'
+    '@SteppieAppBundle/Resources/public/less/style.less'
+    %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% block foot_script_assetic %}
     {% javascripts
     '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
@@ -105,6 +138,7 @@
     '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
     '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
     'https://raw.githubusercontent.com/jmosbech/StickyTableHeaders/master/js/jquery.stickytableheaders.min.js'
+    '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.2/js/select2.min.js'
     '@SteppieAppBundle/Resources/public/js/script.js'
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>

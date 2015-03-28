@@ -4,9 +4,18 @@ project:
   description: Project description
 
 matter:
+  list: Matters
+  new: Create new matter
   id: Id
   name: Matter name
   owners: Matter owners
+
+step:
+  edit: Edit steps
+
+select:
+  owners:
+    label: Select owners
 
 done: Done
 

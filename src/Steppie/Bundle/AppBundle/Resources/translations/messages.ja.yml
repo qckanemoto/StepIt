@@ -4,9 +4,18 @@ project:
   description: プロジェクト概要
 
 matter:
+  list: 案件一覧
+  new: 案件を新規作成
   id: ID
   name: 案件名
   owners: 担当者
+
+step:
+  edit: ステップを編集
+
+select:
+  owners:
+    label: 担当者を選択してください
 
 done: 完了
 

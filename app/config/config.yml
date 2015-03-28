@@ -96,7 +96,7 @@ easy_admin:
         Matter:
             class: Steppie\Bundle\AppBundle\Entity\Matter
             form:
-                fields: [ name, description, type, state, project ]
+                fields: [ name, description, owners, type, state, project ]
         Content:
             class: Steppie\Bundle\AppBundle\Entity\Content
             form:

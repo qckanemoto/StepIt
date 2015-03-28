@@ -8,6 +8,7 @@ use Steppie\Bundle\AppBundle\Entity\Project;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/project")
@@ -22,7 +23,9 @@ class ProjectController extends Controller
     {
         $projects = $this->getDoctrine()->getRepository('SteppieAppBundle:Project')->findAll();
 
-        return compact('projects');
+        return [
+            'projects' => $projects,
+        ];
     }
 
     /**
@@ -30,8 +33,10 @@ class ProjectController extends Controller
      * @Template()
      *
      * @ParamConverter("project", class="SteppieAppBundle:Project")
+     *
+     * todo: want to refactor
      */
-    public function mainAction(Project $project)
+    public function mainAction(Project $project, Request $request)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
@@ -44,8 +49,38 @@ class ProjectController extends Controller
             'state' => Matter::STATE_OPEN,
         ]);
 
+        if ($selectedOwners = $request->get('owners')) {
+            $selectedMatters = [];
+            foreach ($matters as $matter) {
+                foreach ($selectedOwners as $owner) {
+                    if (in_array($owner, $matter->getOwners())) {
+                        $selectedMatters[] = $matter;
+                        break;
+                    }
+                }
+            }
+        } else {
+            $selectedMatters = $matters;
+        }
+
         $contents = $em->getRepository('SteppieAppBundle:Content')->findByProject($project);
 
-        return compact('project', 'steps', 'matters', 'contents');
+        $owners = [];
+        foreach ($matters as $matter) {
+            $owners = array_merge($owners, $matter->getOwners());
+        }
+        $owners = array_unique($owners);
+        sort($owners);
+
+        return [
+            'project' => $project,
+            'steps' => $steps,
+            'matters' => $selectedMatters,
+            'contents' => $contents,
+            'owners' => [
+                'all' => $owners,
+                'selected' => $selectedOwners,
+            ],
+        ];
     }
 }
