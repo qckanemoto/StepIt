@@ -56,13 +56,6 @@ class Matter
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=255, nullable=true)
-     */
-    private $type;
-
-    /**
-     * @var string
-     *
      * @Assert\NotBlank()
      * @Assert\Choice(callback="getStateChoices")
      *
@@ -79,7 +72,15 @@ class Matter
     private $project;
 
     /**
-     * @var Content[]
+     * @var MatterType
+     *
+     * @ORM\ManyToOne(targetEntity="MatterType", inversedBy="matters")
+     * @ORM\JoinColumn(name="matter_type_id", referencedColumnName="id", nullable=true)
+     */
+    private $matterType;
+
+    /**
+     * @var Content[]|Collection
      *
      * @ORM\OneToMany(targetEntity="Content", mappedBy="matter", cascade={"all"})
      */
@@ -93,6 +94,14 @@ class Matter
     {
         $this->state = self::STATE_OPEN;
         $this->contents = new ArrayCollection;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
     }
 
     /**
@@ -161,25 +170,6 @@ class Matter
     }
 
     /**
-     * @param string $type
-     * @return Matter
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
      * @param string $state
      * @return Matter
      */
@@ -199,19 +189,49 @@ class Matter
     }
 
     /**
+     * Set project
+     *
      * @param Project $project
+     * @return Matter
      */
-    public function setProject($project)
+    public function setProject(Project $project)
     {
         $this->project = $project;
+
+        return $this;
     }
 
     /**
+     * Get project
+     *
      * @return Project
      */
     public function getProject()
     {
         return $this->project;
+    }
+
+    /**
+     * Set matterType
+     *
+     * @param MatterType $matterType
+     * @return Matter
+     */
+    public function setMatterType(MatterType $matterType = null)
+    {
+        $this->matterType = $matterType;
+
+        return $this;
+    }
+
+    /**
+     * Get matterType
+     *
+     * @return MatterType
+     */
+    public function getMatterType()
+    {
+        return $this->matterType;
     }
 
     /**
@@ -239,14 +259,6 @@ class Matter
     public function getContents()
     {
         return $this->contents;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->name;
     }
 
     /**

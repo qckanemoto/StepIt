@@ -1,17 +1,23 @@
 project:
-  list: Projects
-  name: Project name
-  description: Project description
+  list:
+    label: Projects
+    name: Project name
+    description: Project description
+  main:
+    matter:
+      id: Id
+      name: Matter name
+      owners: Owners
 
 matter:
-  list: Matters
-  new: Create new matter
-  id: Id
-  name: Matter name
-  owners: Matter owners
+  list:
+    label: Matters
+  new:
+    label: Create new matter
 
 step:
-  edit: Edit steps
+  edit:
+    label: Edit steps
 
 select:
   owners:

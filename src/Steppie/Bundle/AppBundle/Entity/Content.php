@@ -3,7 +3,6 @@
 namespace Steppie\Bundle\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use JMS\Serializer\Annotation as Serialize;
 use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -55,6 +54,14 @@ class Content
 
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->value;
+    }
+
+    /**
      * @return integer
      */
     public function getId()
@@ -82,14 +89,21 @@ class Content
     }
 
     /**
+     * Set matter
+     *
      * @param Matter $matter
+     * @return Content
      */
-    public function setMatter($matter)
+    public function setMatter(Matter $matter)
     {
         $this->matter = $matter;
+
+        return $this;
     }
 
     /**
+     * Get matter
+     *
      * @return Matter
      */
     public function getMatter()
@@ -98,26 +112,25 @@ class Content
     }
 
     /**
+     * Set step
+     *
      * @param Step $step
+     * @return Content
      */
-    public function setStep($step)
+    public function setStep(Step $step)
     {
         $this->step = $step;
+
+        return $this;
     }
 
     /**
+     * Get step
+     *
      * @return Step
      */
     public function getStep()
     {
         return $this->step;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->value;
     }
 }

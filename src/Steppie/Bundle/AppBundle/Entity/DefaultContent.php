@@ -30,18 +30,17 @@ class DefaultContent
      *
      * @Assert\NotBlank()
      *
-     * @ORM\Column(name="matter_type", type="string", length=255)
-     */
-    private $matterType;
-
-    /**
-     * @var string
-     *
-     * @Assert\NotBlank()
-     *
      * @ORM\Column(name="value", type="string", length=255)
      */
     private $value;
+
+    /**
+     * @var MatterType
+     *
+     * @ORM\ManyToOne(targetEntity="MatterType", inversedBy="default_contents")
+     * @ORM\JoinColumn(name="matter_type_id", referencedColumnName="id", nullable=false)
+     */
+    private $matterType;
 
     /**
      * @var Step
@@ -53,30 +52,19 @@ class DefaultContent
 
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->value;
+    }
+
+    /**
      * @return integer
      */
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param string $matterType
-     * @return DefaultContent
-     */
-    public function setMatterType($matterType)
-    {
-        $this->matterType = $matterType;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMatterType()
-    {
-        return $this->matterType;
     }
 
     /**
@@ -99,26 +87,48 @@ class DefaultContent
     }
 
     /**
-     * @param Step $step
+     * Set matterType
+     *
+     * @param MatterType $matterType
+     * @return DefaultContent
      */
-    public function setStep($step)
+    public function setMatterType(MatterType $matterType)
     {
-        $this->step = $step;
+        $this->matterType = $matterType;
+
+        return $this;
     }
 
     /**
+     * Get matterType
+     *
+     * @return MatterType
+     */
+    public function getMatterType()
+    {
+        return $this->matterType;
+    }
+
+    /**
+     * Set step
+     *
+     * @param Step $step
+     * @return DefaultContent
+     */
+    public function setStep(Step $step)
+    {
+        $this->step = $step;
+
+        return $this;
+    }
+
+    /**
+     * Get step
+     *
      * @return Step
      */
     public function getStep()
     {
         return $this->step;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->value;
     }
 }

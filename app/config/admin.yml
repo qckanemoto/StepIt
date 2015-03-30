@@ -1,0 +1,29 @@
+# EasyAdminBundle
+easy_admin:
+  formats:
+    datetime: Y-m-d H:i:s
+  entities:
+    Project:
+      class: Steppie\Bundle\AppBundle\Entity\Project
+      form:
+        fields: [ name, description ]
+    Step:
+      class: Steppie\Bundle\AppBundle\Entity\Step
+      form:
+        fields: [ name, description, link, sequence, project ]
+    Matter:
+      class: Steppie\Bundle\AppBundle\Entity\Matter
+      form:
+        fields: [ name, description, owners, matterType, state, project ]
+    MatterType:
+      class: Steppie\Bundle\AppBundle\Entity\MatterType
+      form:
+        fields: [ name ]
+    Content:
+      class: Steppie\Bundle\AppBundle\Entity\Content
+      form:
+        fields: [ value, matter, step ]
+    DefaultContent:
+      class: Steppie\Bundle\AppBundle\Entity\DefaultContent
+      form:
+        fields: [ matterType, step, value ]

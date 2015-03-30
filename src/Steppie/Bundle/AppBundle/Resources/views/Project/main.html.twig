@@ -2,7 +2,7 @@
 
 {% block page_header %}
     <ol class="breadcrumb">
-        <li><a href="{{ path('steppie_app_project_index') }}">{{ 'project.list'|trans }}</a></li>
+        <li><a href="{{ path('steppie_app_project_index') }}">{{ 'project.list.label'|trans }}</a></li>
         <li class="active">{{ project.name }}</li>
     </ol>
 
@@ -23,9 +23,9 @@
         <div class="btn-group pull-right">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
             <ul class="dropdown-menu dropdown-menu-right">
-                <li><a href="">{{ 'matter.new'|trans }}</a></li>
-                <li><a href="">{{ 'matter.list'|trans }}</a></li>
-                <li><a href="">{{ 'step.edit'|trans }}</a></li>
+                <li><a href="{{ path('admin', { action: 'new', entity: 'Matter' }) }}" target="_blank">{{ 'matter.new.label'|trans }}</a></li>
+                {#<li><a href="">{{ 'matter.list.label'|trans }}</a></li>#}
+                {#<li><a href="">{{ 'step.edit.label'|trans }}</a></li>#}
             </ul>
         </div>
     </div>
@@ -36,13 +36,13 @@
         <table class="table table-hover table-steppie">
             <thead>
             <tr>
-                <th>{{ 'matter.id'|trans }}</th>
+                <th>{{ 'project.main.matter.id'|trans }}</th>
                 {% for matter in matters %}
                     <td>{{ matter.id }}</td>
                 {% endfor %}
             </tr>
             <tr>
-                <th>{{ 'matter.name'|trans }}</th>
+                <th>{{ 'project.main.matter.name'|trans }}</th>
                 {% for matter in matters %}
                     <td>
                         {{ matter.name }}
@@ -55,7 +55,7 @@
                 {% endfor %}
             </tr>
             <tr>
-                <th>{{ 'matter.owners'|trans }}</th>
+                <th>{{ 'project.main.matter.owners'|trans }}</th>
                 {% for matter in matters %}
                     <td>
                         {% for owner in matter.owners %}

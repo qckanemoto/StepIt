@@ -1,17 +1,23 @@
 project:
-  list: プロジェクト一覧
-  name: プロジェクト名
-  description: プロジェクト概要
+  list:
+    label: プロジェクト一覧
+    name: プロジェクト名
+    description: プロジェクト概要
+  main:
+    matter:
+      id: ID
+      name: 案件名
+      owners: 担当者
 
 matter:
-  list: 案件一覧
-  new: 案件を新規作成
-  id: ID
-  name: 案件名
-  owners: 担当者
+  list:
+    label: 案件一覧
+  new:
+    label: 案件を新規作成
 
 step:
-  edit: ステップを編集
+  edit:
+    label: ステップを編集
 
 select:
   owners:

@@ -68,6 +68,14 @@ class Project
     }
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    /**
      * @return integer
      */
     public function getId()
@@ -165,13 +173,5 @@ class Project
     public function getMatters()
     {
         return $this->matters;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->name;
     }
 }

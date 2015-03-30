@@ -5,6 +5,7 @@ namespace Steppie\Bundle\AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Steppie\Bundle\AppBundle\Entity\Matter;
 use Steppie\Bundle\AppBundle\Entity\Project;
+use Steppie\Bundle\AppBundle\Form\Type\MatterType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;

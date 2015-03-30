@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: admin.yml }
     - { resource: ../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml }
 
 framework:
@@ -79,32 +80,6 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
-
-# EasyAdminBundle
-easy_admin:
-    formats:
-        datetime: Y-m-d H:i:s
-    entities:
-        Project:
-            class: Steppie\Bundle\AppBundle\Entity\Project
-            form:
-                fields: [ name, description ]
-        Step:
-            class: Steppie\Bundle\AppBundle\Entity\Step
-            form:
-                fields: [ name, description, link, sequence, project ]
-        Matter:
-            class: Steppie\Bundle\AppBundle\Entity\Matter
-            form:
-                fields: [ name, description, owners, type, state, project ]
-        Content:
-            class: Steppie\Bundle\AppBundle\Entity\Content
-            form:
-                fields: [ value, matter, step ]
-        DefaultContent:
-            class: Steppie\Bundle\AppBundle\Entity\DefaultContent
-            form:
-                fields: [ matter_type, value, step ]
 
 # MopaBootstrapBundle
 mopa_bootstrap:

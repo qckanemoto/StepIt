@@ -93,6 +93,14 @@ class Step
     }
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    /**
      * @return integer
      */
     public function getId()
@@ -177,14 +185,21 @@ class Step
     }
 
     /**
+     * Set project
+     *
      * @param Project $project
+     * @return Step
      */
-    public function setProject($project)
+    public function setProject(Project $project)
     {
         $this->project = $project;
+
+        return $this;
     }
 
     /**
+     * Get project
+     *
      * @return Project
      */
     public function getProject()
@@ -244,13 +259,5 @@ class Step
     public function getDefaultContents()
     {
         return $this->defaultContents;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->name;
     }
 }
