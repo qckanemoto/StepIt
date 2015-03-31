@@ -39,7 +39,7 @@ class ProjectController extends Controller
      */
     public function mainAction(Project $project, Request $request)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
 
         $steps = $em->getRepository('SteppieAppBundle:Step')->findBy([
             'project' => $project,

@@ -5,6 +5,7 @@ namespace Steppie\Bundle\AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -47,6 +48,8 @@ class Project
      * @var Step[]|Collection
      *
      * @ORM\OneToMany(targetEntity="Step", mappedBy="project", cascade={"all"})
+     *
+     * @Serializer\Exclude()
      */
     private $steps;
 
@@ -54,6 +57,8 @@ class Project
      * @var Matter[]|Collection
      *
      * @ORM\OneToMany(targetEntity="Matter", mappedBy="project", cascade={"all"})
+     *
+     * @Serializer\Exclude()
      */
     private $matters;
 

@@ -5,6 +5,7 @@ namespace Steppie\Bundle\AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
 
 /**
@@ -37,6 +38,8 @@ class MatterType
      * @var Matter[]|Collection
      *
      * @ORM\OneToMany(targetEntity="Matter", mappedBy="matterType", cascade={"all"})
+     *
+     * @Serializer\Exclude()
      */
     private $matters;
 
@@ -44,6 +47,8 @@ class MatterType
      * @var DefaultContent[]|Collection
      *
      * @ORM\OneToMany(targetEntity="DefaultContent", mappedBy="matterType", cascade={"all"})
+     *
+     * @Serializer\Exclude()
      */
     private $defaultContents;
 

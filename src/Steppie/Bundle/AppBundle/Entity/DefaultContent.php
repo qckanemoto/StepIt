@@ -9,7 +9,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * DefaultContent
  *
- * @ORM\Table()
+ * @ORM\Table(uniqueConstraints={
+ *   @ORM\UniqueConstraint(name="defaultcontent_mattertype_step_index", columns={"matter_type_id", "step_id"})
+ * })
  * @ORM\Entity(repositoryClass="Steppie\Bundle\AppBundle\Entity\Repository\DefaultContentRepository")
  */
 class DefaultContent
@@ -37,7 +39,7 @@ class DefaultContent
     /**
      * @var MatterType
      *
-     * @ORM\ManyToOne(targetEntity="MatterType", inversedBy="default_contents")
+     * @ORM\ManyToOne(targetEntity="MatterType", inversedBy="defaultContents")
      * @ORM\JoinColumn(name="matter_type_id", referencedColumnName="id", nullable=false)
      */
     private $matterType;
@@ -45,7 +47,7 @@ class DefaultContent
     /**
      * @var Step
      *
-     * @ORM\ManyToOne(targetEntity="Step", inversedBy="default_contents")
+     * @ORM\ManyToOne(targetEntity="Step", inversedBy="defaultContents")
      * @ORM\JoinColumn(name="step_id", referencedColumnName="id", nullable=false)
      */
     private $step;

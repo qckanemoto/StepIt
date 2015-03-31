@@ -6,8 +6,6 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Steppie\Bundle\AppBundle\Entity\Content;
-use Steppie\Bundle\AppBundle\Event\ContentEvent;
-use Steppie\Bundle\AppBundle\Event\ContentEventNames;
 use Steppie\Bundle\AppBundle\Form\Type\ContentType;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -26,11 +24,9 @@ class ContentController extends FOSRestController
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getDoctrine()->getManager();
             $em->persist($content);
             $em->flush();
-
-            $this->dispatchEvent(ContentEventNames::UPDATED, $content);
 
             return $content;
         }
@@ -50,11 +46,9 @@ class ContentController extends FOSRestController
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getDoctrine()->getManager();
             $em->persist($content);
             $em->flush();
-
-            $this->dispatchEvent(ContentEventNames::UPDATED, $content);
 
             return $content;
         }
@@ -67,26 +61,18 @@ class ContentController extends FOSRestController
      *
      * @ParamConverter("content")
      */
-    public function deleteAction(Content $content, Request $request)
+    public function deleteAction(Content $content)
     {
-        $form = $this->createNamelessForm($content, 'DELETE');
-
         $response = [
             'matter' => $content->getMatter(),
             'step' => $content->getStep(),
         ];
 
-        $form->submit($request);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($content);
+        $em->flush();
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
-            $em->remove($content);
-            $em->flush();
-
-            return $response;
-        }
-
-        return $form;
+        return $response;
     }
 
     /**
@@ -100,14 +86,5 @@ class ContentController extends FOSRestController
             'method' => $method,
             'csrf_protection' => false,
         ]);
-    }
-
-    /**
-     * @param $eventName
-     * @param Content $content
-     */
-    private function dispatchEvent($eventName, Content $content)
-    {
-        $this->get('event_dispatcher')->dispatch($eventName, new ContentEvent($content));
     }
 }

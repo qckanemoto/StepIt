@@ -13,6 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *   @ORM\UniqueConstraint(name="content_matter_step_index", columns={"matter_id", "step_id"})
  * })
  * @ORM\Entity(repositoryClass="Steppie\Bundle\AppBundle\Entity\Repository\ContentRepository")
+ * @ORM\EntityListeners({"Steppie\Bundle\AppBundle\EntityListener\ContentListener"})
  */
 class Content
 {
