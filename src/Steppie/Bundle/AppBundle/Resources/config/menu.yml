@@ -1,0 +1,6 @@
+parameters:
+  menu:
+    - label: Sample menu
+      items:
+        - label: Google
+          link: http://google.com

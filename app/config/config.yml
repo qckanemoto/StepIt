@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: admin.yml }
+    - { resource: ../../src/Steppie/Bundle/AppBundle/Resources/config/menu.yml }
     - { resource: ../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml }
 
 framework:
@@ -33,6 +34,7 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         site_name: %site_name%
+        menu: %menu%
 
 # Assetic Configuration
 assetic:
