@@ -5,3 +5,8 @@ services:
       - @doctrine.orm.entity_manager
     tags:
       - { name: kernel.event_subscriber }
+
+  steppie_app.subscriber.matter_event:
+    class: Steppie\Bundle\AppBundle\Event\Subscriber\MatterEventSubscriber
+    tags:
+      - { name: doctrine.event_subscriber, connection: default }
