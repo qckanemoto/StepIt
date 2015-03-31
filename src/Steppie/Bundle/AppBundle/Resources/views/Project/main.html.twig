@@ -6,7 +6,7 @@
         <li class="active">{{ project.name }}</li>
     </ol>
 
-    <div class="clearfix">
+    <div class="clearfix" style="margin-bottom:20px;">
         <form class="form-inline pull-left" action="{{ path('steppie_app_project_main', { project: project.id }) }}" id="select-owners-form">
             <div class="form-group">
                 <select class="form-control" name="owners[]" data-placeholder="{{ 'select.owners.label'|trans }}" multiple style="width:250px">
@@ -33,7 +33,7 @@
 
 {% block content_row %}
     <div class="table-responsive">
-        <table class="table table-hover table-steppie">
+        <table class="table table-bordered table-hover table-steppie">
             <thead>
             <tr>
                 <th>{{ 'project.main.matter.id'|trans }}</th>
