@@ -1,12 +1,12 @@
 action:
-    new: 新規作成
-    show: 表示
-    edit: 編集
-    search: 検索
-    delete: 削除
-    save_changes: 保存
-    cancel: キャンセル
-    back_to_listing: 一覧に戻る
+  new: 新規作成
+  show: 表示
+  edit: 編集
+  search: 検索
+  delete: 削除
+  save: 保存
+  cancel: キャンセル
+  list: 一覧に戻る
 
 new.page_title: %entity_name% を新規作成
 show.page_title: %entity_name% (#%entity_id%)
@@ -15,23 +15,22 @@ list.page_title: %entity_name% 一覧
 search.page_title: <strong>%count%</strong> 件の検索結果
 
 search:
-    no_results: データがありません
+  no_results: データがありません
 
 list:
-    row_actions: 操作
-    search_placeholder: 検索
+  row_actions: 操作
 
 paginator:
-    first: 最初へ
-    previous: 前へ
-    next: 次へ
-    last: 最後へ
-    counter: <strong>%start%</strong> - <strong>%end%</strong> of <strong>%results%</strong>
+  first: 最初へ
+  previous: 前へ
+  next: 次へ
+  last: 最後へ
+  counter: <strong>%start%</strong> - <strong>%end%</strong> of <strong>%results%</strong>
 
 header:
-    close: 閉じる
-    logged_in_as: Logged in as
+  close: 閉じる
+  logged_in_as: Logged in as
 
 delete_modal:
-    title: 本当に削除してよいですか？
-    content: この操作は取り消せません
+  title: 本当に削除してよいですか？
+  content: この操作は取り消せません
